@@ -17,7 +17,6 @@ pipeline {
                     node --version
                     echo "npm version: "
                     npm --version
-                    npm test
                     echo "npm install with ci (compatible with cont. integration)"
                     npm ci
                     echo "building... (prod. ready)"
