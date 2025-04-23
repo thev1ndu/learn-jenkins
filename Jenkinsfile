@@ -32,7 +32,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Jenkins Pipeline | Testing"
-                    test -f build/ishdis.html
+                    test -f build/index.html
                 '''
             }
         }
