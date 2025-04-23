@@ -33,6 +33,7 @@ pipeline {
                 sh '''
                     echo "Jenkins Pipeline | Testing"
                     test -f build/index.html
+                    npm test
                 '''
             }
         }
