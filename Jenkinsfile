@@ -8,6 +8,7 @@ pipeline {
 
     environment {
         NETLIFY_SITE_ID = '8d4a0d03-d80b-4739-96e1-7d0618aa5bf8'
+    }
 
     stages {
         stage('Build') {
