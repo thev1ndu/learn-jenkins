@@ -45,7 +45,8 @@ pipeline {
             steps {
                 sh '''
                     echo "Jenkins Pipeline | Deploying"
-                    npm install netlify-cli -g
+                    npm install netlify-cli
+                    node_modules/.bin/netlify --version
                     echo "deploying to prod. site id: $NETLIFY_SITE_ID"
                 '''
             }
