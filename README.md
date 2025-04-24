@@ -1,70 +1,60 @@
-# Learn Jenkins App
+# React App with Jenkins CI/CD Pipeline
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8d4a0d03-d80b-4739-96e1-7d0618aa5bf8/deploy-status)](https://app.netlify.com/sites/gleaming-queijadas-2f13a0/deploys)
 
-## Available Scripts
+A modern React application with automated CI/CD pipeline using Jenkins and deployment to Netlify.
 
-In the project directory, you can run:
+## 🚀 Live Demo
 
-### `npm start`
+Visit the live application: [https://gleaming-queijadas-2f13a0.netlify.app/](https://gleaming-queijadas-2f13a0.netlify.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📋 Project Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project demonstrates a complete CI/CD workflow for a React application using:
 
-### `npm test`
+- **React** - Frontend framework
+- **Jenkins** - CI/CD automation
+- **Docker** - Containerized build environment
+- **Netlify** - Hosting and deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 CI/CD Pipeline Architecture
 
-### `npm run build`
+The Jenkins pipeline automates the build, test, and deployment workflow using a declarative pipeline approach.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pipeline Stages:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 1. Build
+- Uses Node.js 23 Alpine Docker image
+- Installs dependencies with `npm ci` (optimized for CI environments)
+- Builds production-ready application with `npm run build`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### 2. Test
+- Validates build output
+- Runs application tests
+- Generates JUnit test reports
 
-### `npm run eject`
+#### 3. Deploy
+- Installs Netlify CLI
+- Authenticates with Netlify using secure credentials
+- Deploys build directory to production environment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠️ Setup Instructions
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
+- Git
+- Jenkins with Docker support
+- Netlify account and site setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Jenkins Configuration
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Create a Jenkins Pipeline Job**
+   - Create a new Pipeline job in Jenkins
+   - Configure SCM to point to this repository
 
-## Learn More
+2. **Configure Required Credentials**
+   - Add `netlify-token` credential in Jenkins Credentials Manager
+   - Ensure Docker is available to Jenkins
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. **Environment Variables**
+   - `NETLIFY_SITE_ID`: Your Netlify site ID (already configured in Jenkinsfile)
+   - `NETLIFY_AUTH_TOKEN`: Netlify authentication token (referenced via credentials)
