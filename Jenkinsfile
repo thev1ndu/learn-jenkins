@@ -6,6 +6,11 @@ pipeline {
         }
     }
 
+    environment {
+        NETLIFY_AUTH_TOKEN = credentials('netlify-token')
+        NETLIFY_SITE_ID = credentials('netlify-site-id')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -33,6 +38,16 @@ pipeline {
                     echo "Jenkins Pipeline | Testing"
                     test -f build/index.html
                     npm test
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                    echo "Jenkins Pipeline | Deploying"
+                    npm install netlify-cli -g
+                    netlify init
                 '''
             }
         }
