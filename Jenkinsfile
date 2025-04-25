@@ -24,7 +24,7 @@ pipeline {
                     npm --version
                     echo "npm install with ci (compatible with cont. integration)"
                     npm ci
-                    echo "building... (prod. ready)"
+                    echo "building..."
                     npm run build
                     echo "build file"
                     ls -la | grep "build"
